@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Praktikum 4</title>
+	<link href="css/bootstrap.min.css"rel="stylesheet">
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<link href="css/sticky-footer.css" rel="stylesheet">
+	<script src="http://localhost/praktikum4/barang.js"></script>
+</head>
+<body>
+    <div class="card" style="width: 18rem;">
+        <!-- <div class="modal fade" id="tgambar" style="float:center"> -->
+        <img src="gambar/1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">readmore</a>
+          <a href="#" class="btn btn-primary">maps</a>
+        </div>
+      </div>
+	<div id="bawah"></div>
+
+	<script>
+		awal();
+		function awal(){
+			$("#atas").load("header.html");
+			$("#bawah").load("footer.html");
+		};
+		ambildata();
+		function ambildata(){
+			var hasil = "";
+			var x;
+			for (x in brg){
+				nama = brg[x].nama;
+				tahun = brg[x].tahun;
+				jumlah = brg[x].jumlah;
+				foto = brg[x].foto;
+				deskripsi = brg[x].deskripsi;
+				hasil =hasil + '\
+				<div class="col-md-4"><div class="card mb-4 shadow-sm"> \
+				<img class="card-img-top" src="'+ foto +'" alt="Card image" style="height:150px;" onclick="zoom(this);" data-toggle="modal" data-target="#tgambar">\
+				<div class="card-body">\
+			 	<h4 class="card-title">'+ nama +'</h4>\
+			 	</div></div></div>';
+			}
+			$("#blokbarang").html(hasil);
+
+			}
+
+			function zoom(a){
+				$("#imgzoom").attr("src", a.src);
+			}
+
+		
+	</script>
+</body>
+</html>
