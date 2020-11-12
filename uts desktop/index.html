@@ -1,0 +1,54 @@
+<!Doctype html>
+<html>
+	<head>
+		<title> TUGAS UTS </title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- <script src="http://siwista.com/gbr/wisata.js"></script> -->
+		<script src="data.js"></script>
+	</head>
+	
+	<body>
+		<div class="container" style="margin-top= 100px">
+			<div class="row" id="wisata"></div>
+			<p id="demo"></p>
+		</div>
+		
+		<div class="modal fade" id="foto" style= "float:center">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<img id="imgzoom" style="width: 100%;">
+				</div>
+			</div>
+		</div>
+		<p id="map"></p>
+		<script>
+			ambildata()
+			function ambildata(){
+				var tampil = "";
+				var y;
+				for(y in wst){
+					nama = wst[y].nama;
+					deskripsi = wst[y].deskripsi;
+					alamat = wst[y].alamat;
+					foto = wst[y].foto;
+					tampil = tampil + '\
+					<div class="col-md-4">\<div class="card mb-4 shadow-sm">\
+					<img class="card-img-top" src="'+ foto +'" alt="Card image" style="height:150px" onclick="zoom(this); "data-toggle="modal" data-target="#foto">\
+					<div class="card-body">\
+					<h4 class="card-title">'+ nama +'</h4>\
+					'+ deskripsi +'\
+					<input type="submit" class="btn btn-outline-danger" value="lihat" src="'+ foto +'" alt="Card image" onclick="zoom(this); "data-toggle="modal" data-target="#foto">\
+					<a href=" '+ alamat +'" class="btn btn-outline-primary">map</a></div></div></div>';
+								
+				}
+				$("#wisata").html(tampil);
+			}
+			 function zoom(a){
+				 $("#imgzoom").attr("src", a.src, "str",);
+				 $("#imgzoom").attr('+ deskripsi +');
+			 }
+		</script>
+	</body>
+</html>
